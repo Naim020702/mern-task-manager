@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 // import universalCookieExpress from "universal-cookie-express";
 
 import authRoutes from "./routes/auth.routes.js";
@@ -8,6 +9,11 @@ import taskRouthes from "./routes/tasks.routes.js";
 
 //Este es el servidor
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
 app.use(morgan("dev")); //para que cada vez que llega una peticion al servidor, sea mostrada por consola
 
